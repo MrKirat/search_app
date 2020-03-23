@@ -4,7 +4,7 @@ class ProgrammingLanguagesController < ApplicationController
   # GET /programming_languages
   # GET /programming_languages.json
   def index
-    @programming_languages = ProgrammingLanguage.all
+    @programming_languages = ProgrammingLanguageService.search(params[:search])
   end
 
   # GET /programming_languages/1
@@ -69,6 +69,6 @@ class ProgrammingLanguagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def programming_language_params
-      params.require(:programming_language).permit(:name, :categories, :designed_by)
+      params.require(:programming_language).permit(:name, :categories, :designed_by, :search)
     end
 end
