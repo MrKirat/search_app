@@ -1,8 +1,26 @@
+# This module contains the main logic of the search.
+#   Just include it and specify. searchable fields to use it.
+#   Example:
+#
+#   class YourModel
+#     include Searchable
+#     set_searchable_fields :name, :categories, :designed_by
+#   end
+#
+# There is only one limitation, singleton class should
+# have the all method which returns all instances of that class.
+# Fortunately, ActiveRecord has this method by default :)
+
+# TODO: split this large file into more then one
+# TODO: add validations
+# TODO: refactor the code
+
 module Searchable
   extend ActiveSupport::Concern
 
   included do
     @search_query = SearchQuery.new('')
+    # here is the usage of the all method
     @search_collection = SearchItemCollection.new(all, [])
   end
 
@@ -16,6 +34,7 @@ module Searchable
     end
 
     def set_searchable_fields(*args)
+      # here is the one more usage of the all method
       @search_collection = SearchItemCollection.new(all, args)
     end
 
