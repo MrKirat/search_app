@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Hi, happy to see you here :)
 
-Things you may want to cover:
+The main part of this app is Searchable concern that implements multicolumn search logic for ActiveRecords.
 
-* Ruby version
+To run this project please follow these steps:
+1. Add ```.env``` file to the root of the repo and specify your DB credentials within that file.
+2. Run this command:  
+```rake db:{create,migrate,seed}```
+3. Open root (```/```) or ```/programming_languages``` endpoint.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+I hope you enjoy my code :)
