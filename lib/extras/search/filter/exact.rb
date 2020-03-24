@@ -7,7 +7,7 @@ class Search::Filter::Exact < Search::Filter
 
   def match?(item)
     item.searchable_data.any? do |value|
-      @keyword == value
+      value.include? @keyword
     end
   end
 end
