@@ -1,3 +1,5 @@
+# I decided to add interactor because it allows us to keep
+# business-logic separately from controllers and models
 class SearchProgrammingLanguages
   include Interactor
 
