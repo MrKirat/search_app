@@ -7,8 +7,8 @@ class Search
   end
 
   def find_by_string(search_string)
-    search_keywords = Search::QueryParser.new(search_string.to_s).tokens
-    Search::MatchFinder.new(@items, search_keywords).matches
+    search_filters = Search::Query.new(search_string.to_s).filters
+    Search::MatchFinder.new(@items, search_filters).matches
   end
 
   private
