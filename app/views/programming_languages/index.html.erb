@@ -1,19 +1,43 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Programming Languages</h1>
 
-<%= form_tag(programming_languages_path, method: :get) do %>
-  <%= text_field_tag(:search, params[:search]) %>
-  <%= submit_tag('Search') %>
+<%= form_tag programming_languages_path, method: :get, class: "container-fluid" do %>
+  <div class="input-group">
+    <%= text_field_tag :search, params[:search], class: 'form-control' %>
+    <span class="input-group-btn">
+      <%= submit_tag 'Search', class: "btn btn-default" %>
+    </span>
+  </div>
 <% end %>
 
-<table>
+<p style="margin-top: 10px">
+  <b>Tips:</b>
+  <ul class="list-group row">
+    <li class="list-group-item col-md-3">
+      To exclude something from result use double hyphen symbols. <br>
+      For example: <i>--array</i> will exclude all records with category <i>Array</i>.
+    </li>
+    <li class="list-group-item col-md-3">
+      To find case-sensitive exact match enter your query between double quotes. <br>
+      For example: <i>"John Plevyak"</i> will return <i>Chapel</i> language.
+    </li>
+    <li class="list-group-item col-md-3">
+      To do regular non case-sensitive search just enter your query in input field. <br>
+      For example: <i>John Plevyak</i> will return not only <i>Chapel</i> language.
+    </li>
+    <li class="list-group-item col-md-3">
+      Also, you can combine. <br>
+      For example: <i>Microsoft --scripting</i>
+    </li>
+  </ul>
+</p>
+
+<table class="table table-hover table-bordered">
   <thead>
     <tr>
       <th>Name</th>
       <th>Categories</th>
       <th>Designed by</th>
-      <th colspan="3"></th>
+      <th colspan="3">Actions</th>
     </tr>
   </thead>
 

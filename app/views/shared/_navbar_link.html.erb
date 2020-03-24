@@ -1,0 +1,5 @@
+<li class="<%= 'active' if current_page?(path) %>">
+  <%= link_to path, class: "btn btn-inverse" do %> <%= title %>
+    <%= (content_tag :span, "(current)", :class => "sr-only") if current_page?(path) %>
+  <% end %>
+</li>

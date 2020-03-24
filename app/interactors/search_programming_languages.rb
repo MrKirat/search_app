@@ -4,13 +4,13 @@ class SearchProgrammingLanguages
   SEARCHABLE_FIELDS = :name, :categories, :designed_by
 
   def call
-    context.result =
-      if context.search_string.blank?
-        ProgrammingLanguage.all
-      else
+    if context.search_string.blank?
+      context.result = ProgrammingLanguage.all
+    else
+      context.result =
         Search
           .new(ProgrammingLanguage.all, SEARCHABLE_FIELDS)
           .find_by_string(context.search_string)
-      end
+    end
   end
 end
