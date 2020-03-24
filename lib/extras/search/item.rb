@@ -1,7 +1,8 @@
 class Search::Item
   attr_reader :searchable_data, :object
 
-  def initialize(object = nil, searchable_fields = nil)
+  def initialize(object, searchable_fields)
+    validate_params(object, searchable_fields)
     @object = object
     prepare_searchable_data searchable_fields
   end
@@ -22,5 +23,10 @@ class Search::Item
     else
       @searchable_data << field_value.to_s
     end
+  end
+
+  def validate_params(object, searchable_fields)
+    Search::Validator.validate_class(searchable_fields, Enumerable)
+    Search::Validator.validate_methods(object, searchable_fields)
   end
 end

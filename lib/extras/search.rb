@@ -1,14 +1,13 @@
 # This module contains the main logic of the search.
 
-# TODO: add validations
-
 class Search
-  def initialize(objects_for_search, fields_for_search)
-    prepare_searchable_items(objects_for_search, fields_for_search)
+  def initialize(searchable_objects, searchable_fields)
+    validate_params(searchable_objects)
+    prepare_searchable_items(searchable_objects, searchable_fields)
   end
 
   def find_by_string(search_string)
-    search_keywords = Search::QueryParser.new(search_string).keywords
+    search_keywords = Search::QueryParser.new(search_string.to_s).tokens
     Search::MatchFinder.new(@items, search_keywords).matches
   end
 
@@ -20,5 +19,9 @@ class Search
       item = Search::Item.new(search_object, searchable_fields)
       @items.push item
     end
+  end
+
+  def validate_params(searchable_objects)
+    Validator.validate_class(searchable_objects, Enumerable)
   end
 end
