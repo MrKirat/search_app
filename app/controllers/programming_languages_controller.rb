@@ -4,7 +4,8 @@ class ProgrammingLanguagesController < ApplicationController
   # GET /programming_languages
   # GET /programming_languages.json
   def index
-    @programming_languages = ProgrammingLanguageService.search(params[:search])
+    context = SearchProgrammingLanguages.call(search_string: index_params[:search])
+    @programming_languages = context.result
   end
 
   # GET /programming_languages/1
@@ -62,13 +63,18 @@ class ProgrammingLanguagesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_programming_language
-      @programming_language = ProgrammingLanguage.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def programming_language_params
-      params.require(:programming_language).permit(:name, :categories, :designed_by, :search)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_programming_language
+    @programming_language = ProgrammingLanguage.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def programming_language_params
+    params.require(:programming_language).permit(:name, :categories, :designed_by)
+  end
+
+  def index_params
+    params.permit(:search)
+  end
 end
