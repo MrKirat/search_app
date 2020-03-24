@@ -11,22 +11,39 @@
 
 <p style="margin-top: 10px">
   <b>Tips:</b>
-  <ul class="list-group row">
-    <li class="list-group-item col-md-3">
-      To exclude something from result use double hyphen symbols. <br>
-      For example: <i>--array</i> will exclude all records with category <i>Array</i>.
+  <ul class="list-group">
+    <li class="list-group-item">
+      To exclude something from the result use two hyphen symbols.
+      For example, the  <i>--array</i> flag will exclude all records with category <i>Array</i>.
     </li>
-    <li class="list-group-item col-md-3">
-      To find case-sensitive exact match enter your query between double quotes. <br>
-      For example: <i>"John Plevyak"</i> will return <i>Chapel</i> language.
+    <li class="list-group-item">
+      To find a case-sensitive, order-important and not full-word match enter your query between double-quotes.
+      It works by the include principle. For example, <i>"John Plevyak"</i> will return <i>Chapel</i> language.
     </li>
-    <li class="list-group-item col-md-3">
-      To do regular non case-sensitive search just enter your query in input field. <br>
-      For example: <i>John Plevyak</i> will return not only <i>Chapel</i> language.
+    <li class="list-group-item">
+      To do the whole-word-match and non-case-sensitive search just enters your query in the input field.
+      For example, <i>Microsoft scripting</i> will return all scripting languages developed by Microsoft.
     </li>
-    <li class="list-group-item col-md-3">
-      Also, you can combine. <br>
-      For example: <i>Microsoft --scripting</i>
+    <li class="list-group-item">
+      Also, you can combine.
+      For example, <i>Microsoft --scripting</i> will return all non-scripting languages developed by Microsoft.
+    </li>
+    <li class="list-group-item">
+      A record will be returned only if it matches all tokens you entered into the search input. For example, it doesn't
+      matter if we write `Interpreted "Thomas Eugene"` or `Interpreted Thomas Eugene`. Let's look deeper at these two
+      cases:
+      `Interpreted "Thomas Eugene"' has two tokens: Interpreted (regular token) and "Thomas Eugene" (exact match token).
+      Firstly, the search module will exclude all record which doesn't have any mentioned about 'Interpreted' word (this
+      match is non-case sensitive and whole-word, so for example, if we write 'Interpret' instead of 'Interpreted' then
+      the search will return nothing). Secondly, the search will exclude all record which doesn't have any mentioned
+      about "Thomas Eugene". Search will be finding records' fields that include "Thomas Eugene" token (this match is
+      case-sensitive and non-whole-word, so for example "Thomas eugene" is not equal to "Thomas Eugene" and for example
+      "Thomas Eugen" token result is similar to"Thomas Eugene" token result.)
+      `Interpreted "Thomas Eugene"' has three tokens: Interpreted, Thomas and Eugene (all them are regular token). All
+      of them work the same way as the first token from the first case.
+    </li>
+    <li class="list-group-item">
+      The search module will return all records if search input doesn't contain any letter or numbers ("", " ", ",,," "---  +").
     </li>
   </ul>
 </p>
