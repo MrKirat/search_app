@@ -4,18 +4,14 @@ class Search::MatchFinder
   attr_reader :matches
 
   def initialize(searchable_items, filters)
-    validate_params(searchable_items, filters)
-    @searchable_items = searchable_items
-    @filters = filters
-    prepare_matches
+    validate_params searchable_items, filters
+    prepare_matches filters, searchable_items
   end
 
   private
 
-  def prepare_matches
-    searchable_items = @searchable_items
-
-    @filters.each do |filter|
+  def prepare_matches(filters, searchable_items)
+    filters.each do |filter|
       searchable_items = filter.call searchable_items
     end
 
