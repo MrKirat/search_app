@@ -1,3 +1,7 @@
+# This class is developed to split string that user types into search input on
+# index page view into separate tokens. After splitting, Search::FilterFactory
+# will generate different filters based on given tokens.
+
 class Search::Query
   attr_reader :filters
 

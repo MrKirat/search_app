@@ -1,3 +1,10 @@
+# This factory was developed to create different filters based on givem token.
+# Token can looks like the following:
+#
+# --array - negative token
+#   Basic - regular token
+#  "Thomas Johnson" - exact token
+
 module Search::FilterFactory
   extend self
 

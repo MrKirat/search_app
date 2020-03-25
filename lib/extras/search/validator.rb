@@ -1,6 +1,8 @@
+# This is developed to validate some fields of other classes
+
 module Search::Validator
   def self.validate_class(object, target_class)
-    raise ArgumentError.new("#{object} must be Enumerable") unless object.is_a? target_class
+    raise ArgumentError.new("#{object} must be #{target_class}") unless object.is_a? target_class
   end
 
   def self.validate_methods(object, methods)

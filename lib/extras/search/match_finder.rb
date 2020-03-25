@@ -1,3 +1,5 @@
+#This class was developed to return all matched objects based on given filters.
+
 class Search::MatchFinder
   attr_reader :matches
 

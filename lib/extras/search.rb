@@ -1,4 +1,6 @@
-# This module contains the main logic of the search.
+# This module contains the logic of the search functionality.
+# As params we should pass array of searchable objects and names
+# of their fields where search module should look for matches.
 
 class Search
   def initialize(searchable_objects, searchable_fields)

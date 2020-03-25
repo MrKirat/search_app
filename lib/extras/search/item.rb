@@ -1,3 +1,8 @@
+# Search::Item is designed to extract all needed data from object based on
+# given fields' names. Then all extracted from object data will be concatenated
+# into one big array. This way we can do search not depend on fields' names,
+# because now all needed data are in one @searchable_data field.
+
 class Search::Item
   attr_reader :searchable_data, :object
 
