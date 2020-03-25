@@ -29,11 +29,11 @@ RSpec.describe ProgrammingLanguagesController, type: :controller do
   # ProgrammingLanguage. As you add validations to ProgrammingLanguage, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {name: "Some language", categories: ["Some category"], designed_by: ["Some developer"]}
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {name: nil, categories: nil, designed_by: 'Some string'}
   }
 
   # This should return the minimal set of values that should be in the session
